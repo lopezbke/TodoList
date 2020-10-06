@@ -21,6 +21,12 @@ namespace TodoList.Controllers
         }*/
 
         // GET: UserInfo/Details/5
+        public ActionResult Login() 
+        {
+            var userInfo = new UserInfo();
+            userInfo.
+            return View();
+        }
         public ActionResult Details(int? id)
         {
             if (id == null)

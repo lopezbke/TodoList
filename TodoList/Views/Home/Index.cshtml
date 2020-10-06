@@ -2,30 +2,37 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="jumbotron bg-white mt-5" id="Welcome">
     <h1>Todo list App</h1>
     <p class="lead">Todo List App is a free app for maintaining remainders, shopping list and more.</p>
-    <p><a href="" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <p><a href="" class="btn btn-success btn-lg">Learn more &raquo;</a></p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Create New Account</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p>@Html.ActionLink("Create Account","Create","UserInfo",null, new {@class ="btn btn-default" })</p>
+    <div class="col-md-4 mb-2">
+        <div class="col-md-12 bg-white h-100 p-4">
+            <h2>Create New Account</h2>
+            <div style="height:20px;"></div>
+            <p>
+                Create a new account to use the best todolist app available on the market.
+            </p>
+            <p>@Html.ActionLink("Create Account", "Create", "UserInfo", null, new { @class = "btn btn-success" })</p>
+        </div>     
     </div>
-    <div class="col-md-4">
-        <h2>Login</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="col-md-4 mb-2">
+        <div class="col-md-12 bg-white h-100 p-4">
+            <h2>Login</h2>
+            <p>Already created account?</p>
+            <p>Jump right in!</p>
+            <p><a class="btn btn-warning" href="https://go.microsoft.com/fwlink/?LinkId=301866">Login &raquo;</a></p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Forgot Password</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-md-4 mb-2">
+        <div class="col-md-12 bg-white h-100 p-4">
+            <h2>Forgot Password</h2>
+            <div style="height:25px;"></div>
+            <p>Click the button below for account recovery.</p>
+            <p><a class="btn btn-danger" href="https://go.microsoft.com/fwlink/?LinkId=301867">Reset &raquo;</a></p>
+        </div>
     </div>
 </div>
