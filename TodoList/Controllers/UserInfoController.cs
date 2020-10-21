@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using TodoList.Models;
 
 namespace TodoList.Controllers
@@ -30,16 +31,36 @@ namespace TodoList.Controllers
         [HttpPost]
         public ActionResult Login([Bind(Include = "UserName,Password")] UserInfo userInfo)
         {
-
-            var a = db.UserInfoes.Where(u => u.UserName == userInfo.UserName && u.Password == userInfo.Password);
-            
-            foreach (var item in a) 
+            if (ModelState.IsValid) 
             {
-                System.Diagnostics.Debug.WriteLine(item.UserName);
-                System.Diagnostics.Debug.WriteLine(item.Password);
-                System.Diagnostics.Debug.WriteLine(item.Email);
+                var a = db.UserInfoes.Where(u => u.UserName == userInfo.UserName && u.Password == userInfo.Password);
+                string userName = null;
+                string password = null;
+                string email = null;
+                int userId = 0;
+                foreach (var item in a)
+                {
+                    System.Diagnostics.Debug.WriteLine(item.UserName);
+                    System.Diagnostics.Debug.WriteLine(item.Password);
+                    System.Diagnostics.Debug.WriteLine(item.Email);
+                    userId = item.UserId;
+                    userName = item.UserName;
+                    password = item.Password;
+                    email = item.Email;
+                }
+                if (userName != "" && userName != null) 
+                {
+                    FormsAuthentication.SetAuthCookie(userId.ToString(), false);
+                    Session.Add("UserId", userId.ToString());
+
+                    FormsAuthentication.SetAuthCookie(userName, false);
+                    Session.Add("UserId", userName);
+                }
+                
             }
             
+
+           
             return RedirectToAction("Index","TodoTables");
         }
         public ActionResult Details(int? id)

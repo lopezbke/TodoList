@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using TodoList.Models;
 
 namespace TodoList.Controllers
-{
+{   [Authorize]
     public class TodoTablesController : Controller
     {
         private TodoListDbEntities db = new TodoListDbEntities();
