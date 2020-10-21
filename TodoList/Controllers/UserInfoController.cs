@@ -33,9 +33,11 @@ namespace TodoList.Controllers
 
             var a = db.UserInfoes.Where(u => u.UserName == userInfo.UserName && u.Password == userInfo.Password);
             
-            foreach (var item in a.ToArray()) 
+            foreach (var item in a) 
             {
-                System.Diagnostics.Debug.WriteLine(item.ToString());
+                System.Diagnostics.Debug.WriteLine(item.UserName);
+                System.Diagnostics.Debug.WriteLine(item.Password);
+                System.Diagnostics.Debug.WriteLine(item.Email);
             }
             
             return RedirectToAction("Index","TodoTables");
