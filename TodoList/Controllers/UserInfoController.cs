@@ -12,6 +12,7 @@ namespace TodoList.Controllers
 {
     public class UserInfoController : Controller
     {
+        
         private TodoListDbEntities db = new TodoListDbEntities();
 
         // GET: UserInfo
@@ -23,9 +24,21 @@ namespace TodoList.Controllers
         // GET: UserInfo/Details/5
         public ActionResult Login() 
         {
-            var userInfo = new UserInfo();
-            userInfo.
+            
             return View();
+        }
+        [HttpPost]
+        public ActionResult Login([Bind(Include = "UserName,Password")] UserInfo userInfo)
+        {
+
+            var a = db.UserInfoes.Where(u => u.UserName == userInfo.UserName && u.Password == userInfo.Password);
+            
+            foreach (var item in a.ToArray()) 
+            {
+                System.Diagnostics.Debug.WriteLine(item.ToString());
+            }
+            
+            return RedirectToAction("Index","TodoTables");
         }
         public ActionResult Details(int? id)
         {
