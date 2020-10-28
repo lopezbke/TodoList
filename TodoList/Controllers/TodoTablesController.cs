@@ -17,7 +17,8 @@ namespace TodoList.Controllers
         // GET: TodoTables
         public ActionResult Index()
         {
-            var todoTables = db.TodoTables.Include(t => t.UserInfo);
+            int userId =  Convert.ToInt32(Session["UserId"]);
+            var todoTables = db.TodoTables.Include(t => t.UserInfo).Where(t => t.UserId == userId);
             return View(todoTables.ToList());
         }
 

@@ -28,6 +28,12 @@ namespace TodoList.Controllers
             
             return View();
         }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            return RedirectToAction("Index","Home");
+        }
         [HttpPost]
         public ActionResult Login([Bind(Include = "UserName,Password")] UserInfo userInfo)
         {
@@ -54,7 +60,7 @@ namespace TodoList.Controllers
                     Session.Add("UserId", userId.ToString());
 
                     FormsAuthentication.SetAuthCookie(userName, false);
-                    Session.Add("UserId", userName);
+                    Session.Add("UserName", userName);
                 }
                 
             }
